@@ -1,19 +1,21 @@
-package com.back.payetonkawa.services.impl;
+package com.back.customers.services.impl;
 
-import com.back.payetonkawa.dto.CustomerDto;
-import com.back.payetonkawa.mapper.CustomerMapper;
-import com.payetonkafe.entity.model.Customer;
-import com.payetonkafe.entity.model.Order;
-import com.back.payetonkawa.repository.CustomerRepository;
-import com.back.payetonkawa.services.CustomerService;
-import com.payetonkafe.entity.model.Profile;
-import org.checkerframework.checker.units.qual.C;
+import com.back.customers.dto.CustomerDto;
+import com.back.customers.mapper.CustomerMapper;
+import com.back.customers.model.Customer;
+import com.back.customers.repository.CustomerRepository;
+import com.back.customers.services.CustomerService;
+import com.back.customers.model.Profile;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
+@NoArgsConstructor
 public class CustomersServiceImpl implements CustomerService {
 
     private CustomerRepository customerRepository;

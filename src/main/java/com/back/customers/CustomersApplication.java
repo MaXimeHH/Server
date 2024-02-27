@@ -1,13 +1,13 @@
-package com.back.payetonkawa;
+package com.back.customers;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PayetonkawaApplication {
+public class CustomersApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PayetonkawaApplication.class, args);
+		SpringApplication.run(CustomersApplication.class, args);
 	}
 
 }

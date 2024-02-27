@@ -1,8 +1,8 @@
-package com.back.payetonkawa.controller;
+package com.back.customers.controller;
 
-import com.back.payetonkawa.controller.api.CustomersApiInterface;
-import com.back.payetonkawa.dto.CustomerDto;
-import com.back.payetonkawa.services.CustomerService;
+import com.back.customers.controller.api.CustomersApiInterface;
+import com.back.customers.dto.CustomerDto;
+import com.back.customers.services.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

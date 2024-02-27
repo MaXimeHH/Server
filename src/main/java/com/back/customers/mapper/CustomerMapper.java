@@ -1,7 +1,7 @@
-package com.back.payetonkawa.mapper;
+package com.back.customers.mapper;
 
-import com.back.payetonkawa.dto.CustomerDto;
-import com.payetonkafe.entity.model.Customer;
+import com.back.customers.dto.CustomerDto;
+import com.back.customers.model.Customer;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

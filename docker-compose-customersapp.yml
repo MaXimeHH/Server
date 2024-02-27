@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  mariadb:
+    image: mariadb
+    container_name: mariadb_customersapp
+    restart: always
+    environment:
+      MYSQL_DATABASE: customers
+      MYSQL_USER: maxime
+      MYSQL_PASSWORD: maxime
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  springbootapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: customer_app_container
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mariadb
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mariadb://mariadb:3306/customers
+      SPRING_DATASOURCE_USERNAME: maxime
+      SPRING_DATASOURCE_PASSWORD: maxime
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.mariadb.jdbc.Driver
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.MariaDBDialect
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+volumes:
+  mariadb_data:

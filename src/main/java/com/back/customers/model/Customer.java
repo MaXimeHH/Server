@@ -1,10 +1,9 @@
-package com.back.payetonkawa.model;
+package com.back.customers.model;
 
-import com.payetonkafe.entity.model.Profile;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -25,4 +24,5 @@ public class Customer {
     private String codePostal;
 
     private String ville;
+
 }

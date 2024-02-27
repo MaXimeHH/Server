@@ -1,6 +1,6 @@
-package com.back.payetonkawa.dto;
+package com.back.customers.dto;
 
-import com.payetonkafe.entity.model.Profile;
+import com.back.customers.model.Profile;
 import lombok.Getter;
 import lombok.Setter;
 

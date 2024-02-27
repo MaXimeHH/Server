@@ -1,8 +1,6 @@
-package com.back.payetonkawa.repository;
+package com.back.customers.repository;
 
-import com.back.payetonkawa.dto.CustomerDto;
-import com.payetonkafe.entity.model.Customer;
-
+import com.back.customers.model.Customer;
 import java.util.List;
 
 public interface CustomerRepository {
