@@ -2,8 +2,6 @@ package com.back.payetonkawa.controller;
 
 import com.back.payetonkawa.controller.api.CustomersApiInterface;
 import com.back.payetonkawa.dto.CustomerDto;
-import com.back.payetonkawa.model.Customer;
-import com.back.payetonkawa.repository.CustomerRepository;
 import com.back.payetonkawa.services.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

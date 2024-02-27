@@ -1,8 +1,7 @@
 package com.back.payetonkawa.services;
 
 import com.back.payetonkawa.dto.CustomerDto;
-import com.back.payetonkawa.model.Customer;
-
+import com.payetonkafe.entity.model.Customer;
 import java.util.List;
 
 public interface CustomerService {

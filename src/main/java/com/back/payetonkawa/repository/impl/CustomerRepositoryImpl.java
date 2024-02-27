@@ -1,6 +1,6 @@
 package com.back.payetonkawa.repository.impl;
 
-import com.back.payetonkawa.model.Customer;
+import com.payetonkafe.entity.model.Customer;
 import com.back.payetonkawa.repository.CustomerRepository;
 
 import java.util.List;

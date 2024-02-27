@@ -2,10 +2,11 @@ package com.back.payetonkawa.services.impl;
 
 import com.back.payetonkawa.dto.CustomerDto;
 import com.back.payetonkawa.mapper.CustomerMapper;
-import com.back.payetonkawa.model.Customer;
-import com.back.payetonkawa.model.Order;
+import com.payetonkafe.entity.model.Customer;
+import com.payetonkafe.entity.model.Order;
 import com.back.payetonkawa.repository.CustomerRepository;
 import com.back.payetonkawa.services.CustomerService;
+import com.payetonkafe.entity.model.Profile;
 import org.checkerframework.checker.units.qual.C;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +40,7 @@ public class CustomersServiceImpl implements CustomerService {
 
         oldCustomer.setAdresse(customer.getAdresse());
         oldCustomer.setVille(customer.getVille());
-        oldCustomer.setProfile(customer.getProfile());
+        oldCustomer.setProfiles((List<Profile>) customer.getProfile());
         oldCustomer.setCodePostal(customer.getCodePostal());
 
         this.customerRepository.update(oldCustomer);
@@ -58,7 +59,7 @@ public class CustomersServiceImpl implements CustomerService {
         Customer newCustomer = this.customerMapper.customerDtoToCustomer(customer);
 
         newCustomer.setCodePostal(customer.getCodePostal());
-        newCustomer.setProfile(customer.getProfile());
+        newCustomer.setProfiles((List<Profile>) customer.getProfile());
         newCustomer.setVille(customer.getVille());
         newCustomer.setAdresse(customer.getAdresse());
 

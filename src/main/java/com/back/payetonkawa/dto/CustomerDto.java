@@ -1,7 +1,6 @@
 package com.back.payetonkawa.dto;
 
-import com.back.payetonkawa.model.Profile;
-import jakarta.persistence.OneToOne;
+import com.payetonkafe.entity.model.Profile;
 import lombok.Getter;
 import lombok.Setter;
 
