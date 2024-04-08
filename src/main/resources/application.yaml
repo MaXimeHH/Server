@@ -15,3 +15,9 @@ management:
     web:
       exposure:
         include: [ "prometheus" ]
+
+rabbitmq:
+    host: http://localhost
+    port: 5672
+    username: guest
+    password: guest
