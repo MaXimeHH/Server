@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Image CI Customers
 
 on:
   push:
@@ -14,28 +14,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-
-    - name: Run tests
-      run: |
-        # Commandes pour exécuter les tests de votre application
-
-    - name: Security scan
-      uses: docker/scan-action@v1
-      with:
-        image-ref: my-image-name:$(date +%s)
-
-    - name: Check dependencies
-      run: |
-        # Commandes pour vérifier les dépendances de votre application
-
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-
-    - name: Login to DockerHub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-    - name: Push image to DockerHub
-      run: docker push my-image-name:$(date +%s)
