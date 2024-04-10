@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://mariadb:3306/customers
+    username: payetonkaya
+    password: Azertyuiop*
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    hibernate:
+      ddl-auto: update
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: [ "prometheus" ]
+
+rabbitmq:
+    host: http://localhost
+    port: 5672
+    username: guest
+    password: guest

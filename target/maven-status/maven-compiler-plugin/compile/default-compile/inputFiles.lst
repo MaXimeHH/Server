@@ -1,0 +1,11 @@
+/Users/debruynemaxime/Documents/EPSI - 4ème année/SUJETS MSPR/MSPR BLOC4/BFF/CustomersApp/src/main/java/com/back/customers/controller/CustomerController.java
+/Users/debruynemaxime/Documents/EPSI - 4ème année/SUJETS MSPR/MSPR BLOC4/BFF/CustomersApp/src/main/java/com/back/customers/model/Profile.java
+/Users/debruynemaxime/Documents/EPSI - 4ème année/SUJETS MSPR/MSPR BLOC4/BFF/CustomersApp/src/main/java/com/back/customers/config/RabbitConfig.java
+/Users/debruynemaxime/Documents/EPSI - 4ème année/SUJETS MSPR/MSPR BLOC4/BFF/CustomersApp/src/main/java/com/back/customers/model/Customer.java
+/Users/debruynemaxime/Documents/EPSI - 4ème année/SUJETS MSPR/MSPR BLOC4/BFF/CustomersApp/src/main/java/com/back/customers/mapper/CustomerMapper.java
+/Users/debruynemaxime/Documents/EPSI - 4ème année/SUJETS MSPR/MSPR BLOC4/BFF/CustomersApp/src/main/java/com/back/customers/dto/CustomerDto.java
+/Users/debruynemaxime/Documents/EPSI - 4ème année/SUJETS MSPR/MSPR BLOC4/BFF/CustomersApp/src/main/java/com/back/customers/repository/CustomerRepository.java
+/Users/debruynemaxime/Documents/EPSI - 4ème année/SUJETS MSPR/MSPR BLOC4/BFF/CustomersApp/src/main/java/com/back/customers/services/impl/CustomersServiceImpl.java
+/Users/debruynemaxime/Documents/EPSI - 4ème année/SUJETS MSPR/MSPR BLOC4/BFF/CustomersApp/src/main/java/com/back/customers/CustomersApplication.java
+/Users/debruynemaxime/Documents/EPSI - 4ème année/SUJETS MSPR/MSPR BLOC4/BFF/CustomersApp/src/main/java/com/back/customers/services/CustomerService.java
+/Users/debruynemaxime/Documents/EPSI - 4ème année/SUJETS MSPR/MSPR BLOC4/BFF/CustomersApp/src/main/java/com/back/customers/controller/api/CustomersApiInterface.java
