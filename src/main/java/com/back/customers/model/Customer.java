@@ -14,15 +14,19 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @OneToMany
     private List<Profile> profiles;
 
+    @Column(name = "adresse")
     private String adresse;
 
+    @Column(name = "codePostal")
     private String codePostal;
 
+    @Column(name = "ville")
     private String ville;
 
 }
