@@ -22,7 +22,7 @@ public class CustomersServiceImpl implements CustomerService {
     @Override
     public List<CustomerDto> getAllCustomers() {
         List<CustomerDto> result = new ArrayList<>();
-        this.customerRepository.getAllCustomers().forEach(
+        this.customerRepository.findAll().forEach(
                 elt -> result.add(this.customerMapper.customerToCustomerDto(elt))
         );
         return result;
@@ -30,26 +30,26 @@ public class CustomersServiceImpl implements CustomerService {
 
     @Override
     public CustomerDto getCustomerById(Long id) {
-        return this.customerMapper.customerToCustomerDto(this.customerRepository.getCustomerbyId(id));
+        return this.customerMapper.customerToCustomerDto(this.customerRepository.findById(id).get());
     }
 
     @Override
     public CustomerDto updateCustomer(CustomerDto customer) {
-        Customer oldCustomer = this.customerRepository.getCustomerbyId(customer.getId());
+        Customer oldCustomer = this.customerRepository.findById(customer.getId()).get();
 
         oldCustomer.setAdresse(customer.getAdresse());
         oldCustomer.setVille(customer.getVille());
         oldCustomer.setProfile(customer.getProfile());
         oldCustomer.setCodePostal(customer.getCodePostal());
 
-        this.customerRepository.update(oldCustomer);
+        this.customerRepository.saveAndFlush(oldCustomer);
 
         return this.customerMapper.customerToCustomerDto(oldCustomer);
     }
 
     @Override
     public String deleteCustomer(Long id) {
-        this.customerRepository.deleteCustomer(id);
+        this.customerRepository.deleteById(id);
         return "Le client à bien été suprimée.";
     }
 
@@ -62,7 +62,7 @@ public class CustomersServiceImpl implements CustomerService {
         newCustomer.setVille(customer.getVille());
         newCustomer.setAdresse(customer.getAdresse());
 
-        this.customerRepository.createCustomer(newCustomer);
+        this.customerRepository.save(newCustomer);
 
         return this.customerMapper.customerToCustomerDto(newCustomer);
     }
