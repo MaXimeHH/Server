@@ -3,15 +3,16 @@ package com.back.customers.services.impl;
 import com.back.customers.dto.CustomerDto;
 import com.back.customers.mapper.CustomerMapper;
 import com.back.customers.model.Customer;
+import com.back.customers.model.Profile;
 import com.back.customers.repository.CustomerRepository;
 import com.back.customers.services.CustomerService;
-import com.back.customers.model.Profile;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -42,7 +43,7 @@ public class CustomersServiceImpl implements CustomerService {
 
         oldCustomer.setAdresse(customer.getAdresse());
         oldCustomer.setVille(customer.getVille());
-        oldCustomer.setProfiles((List<Profile>) customer.getProfile());
+        oldCustomer.setProfiles(customer.getProfiles().stream().map(customerMapper::profileDtoToProfile).collect(Collectors.toList()));
         oldCustomer.setCodePostal(customer.getCodePostal());
 
         this.customerRepository.saveAndFlush(oldCustomer);
@@ -61,7 +62,7 @@ public class CustomersServiceImpl implements CustomerService {
         Customer newCustomer = this.customerMapper.customerDtoToCustomer(customer);
 
         newCustomer.setCodePostal(customer.getCodePostal());
-        newCustomer.setProfiles((List<Profile>) customer.getProfile());
+        newCustomer.setProfiles(customer.getProfiles().stream().map(customerMapper::profileDtoToProfile).collect(Collectors.toList()));
         newCustomer.setVille(customer.getVille());
         newCustomer.setAdresse(customer.getAdresse());
 

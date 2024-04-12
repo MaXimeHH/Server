@@ -43,9 +43,4 @@ public class CustomerController implements CustomersApiInterface {
         rabbitTemplate.convertAndSend(RabbitConfig.CREATE_CUSTOMER_QUEUE, customer);
         return ResponseEntity.ok(this.customerService.createCustomer(customer));
     }
-
-
-
-
-
 }

@@ -1,4 +1,9 @@
 spring:
+  rabbitmq:
+    host: dev-rabbit
+    port: 5672
+    username: guest
+    password: guest
   datasource:
     url: jdbc:mariadb://mariadb:3306/customers
     username: payetonkaya
@@ -15,9 +20,3 @@ management:
     web:
       exposure:
         include: [ "prometheus" ]
-
-rabbitmq:
-    host: http://localhost
-    port: 5672
-    username: guest
-    password: guest
