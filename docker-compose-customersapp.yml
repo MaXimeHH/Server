@@ -32,5 +32,13 @@ services:
       SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.MariaDBDialect
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
 
+  dev-rabbit:
+    image: rabbitmq:management
+    container_name: dev-rabbit
+    hostname: rabbitmq-dev
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
 volumes:
   mariadb_customersapp_data:

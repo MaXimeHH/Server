@@ -5,22 +5,24 @@ import com.back.customers.mapper.CustomerMapper;
 import com.back.customers.model.Customer;
 import com.back.customers.repository.CustomerRepository;
 import com.back.customers.services.CustomerService;
-import com.back.customers.model.Profile;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
-@NoArgsConstructor
 public class CustomersServiceImpl implements CustomerService {
 
-    private CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
+    private final CustomerMapper customerMapper;
 
-    private CustomerMapper customerMapper;
+    public CustomersServiceImpl(CustomerRepository customerRepository, CustomerMapper customerMapper) {
+        this.customerRepository = customerRepository;
+        this.customerMapper = customerMapper;
+    }
 
     @Override
     public List<CustomerDto> getAllCustomers() {
@@ -42,7 +44,7 @@ public class CustomersServiceImpl implements CustomerService {
 
         oldCustomer.setAdresse(customer.getAdresse());
         oldCustomer.setVille(customer.getVille());
-        oldCustomer.setProfiles((List<Profile>) customer.getProfile());
+        oldCustomer.setProfiles(customer.getProfiles().stream().map(customerMapper::profileDtoToProfile).collect(Collectors.toList()));
         oldCustomer.setCodePostal(customer.getCodePostal());
 
         this.customerRepository.saveAndFlush(oldCustomer);
@@ -51,9 +53,13 @@ public class CustomersServiceImpl implements CustomerService {
     }
 
     @Override
-    public String deleteCustomer(Long id) {
-        this.customerRepository.deleteById(id);
-        return "Le client à bien été suprimée.";
+    public void deleteCustomer(Long id) {
+        Optional<Customer> customer = customerRepository.findById(id);
+        if (customer.isPresent()) {
+            customerRepository.delete(customer.get());
+        } else {
+            throw new EntityNotFoundException("Customer with id " + id + " not found");
+        }
     }
 
     @Override
@@ -61,7 +67,7 @@ public class CustomersServiceImpl implements CustomerService {
         Customer newCustomer = this.customerMapper.customerDtoToCustomer(customer);
 
         newCustomer.setCodePostal(customer.getCodePostal());
-        newCustomer.setProfiles((List<Profile>) customer.getProfile());
+        newCustomer.setProfiles(customer.getProfiles().stream().map(customerMapper::profileDtoToProfile).collect(Collectors.toList()));
         newCustomer.setVille(customer.getVille());
         newCustomer.setAdresse(customer.getAdresse());
 
