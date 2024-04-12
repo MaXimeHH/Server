@@ -12,6 +12,8 @@ public class RabbitConfig {
     public static final String CREATE_CUSTOMER_QUEUE = "createCustomerQueue";
     public static final String UPDATE_CUSTOMER_QUEUE = "updateCustomerQueue";
 
+    public static final String DELETE_CUSTOMER_QUEUE = "deleteCustomerQueue";
+
     @Bean
     public Queue getAllCustomersQueue() {
         return new Queue(GET_ALL_CUSTOMERS_QUEUE);
@@ -30,5 +32,10 @@ public class RabbitConfig {
     @Bean
     public Queue updateCustomerQueue() {
         return new Queue(UPDATE_CUSTOMER_QUEUE);
+    }
+
+    @Bean
+    public Queue deleteCustomQueue() {
+        return new Queue(DELETE_CUSTOMER_QUEUE);
     }
 }
