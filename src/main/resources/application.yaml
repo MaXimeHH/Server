@@ -9,11 +9,13 @@ spring:
     username: payetonkaya
     password: Azertyuiop*
     driver-class-name: org.mariadb.jdbc.Driver
-
   jpa:
     database-platform: org.hibernate.dialect.MariaDBDialect
     hibernate:
       ddl-auto: update
+  security:
+    user:
+      password: c55Pez5sC76AWcZ
 
 management:
   endpoints:

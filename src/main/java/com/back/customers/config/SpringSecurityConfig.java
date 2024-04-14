@@ -1,6 +1,7 @@
 package com.back.customers.config;
 
 import com.nimbusds.jose.jwk.source.ImmutableSecret;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -52,11 +53,15 @@ public class SpringSecurityConfig {
     }
 
     @Bean
-    public UserDetailsService users() {
-        UserDetails user = User.builder().username("user").password(passwordEncoder().encode("password")).roles("USER")
+    public UserDetailsService users(@Value("${spring.security.user.password}") String password) {
+        UserDetails user = User.builder()
+                .username("user")
+                .password(passwordEncoder().encode(password))
+                .roles("USER")
                 .build();
         return new InMemoryUserDetailsManager(user);
     }
+
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
