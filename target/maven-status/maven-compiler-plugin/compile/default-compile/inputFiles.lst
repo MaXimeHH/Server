@@ -6,12 +6,11 @@ C:\Users\Rodrigue\Desktop\PayeTonKawa\CustomersApp\src\main\java\com\back\custom
 C:\Users\Rodrigue\Desktop\PayeTonKawa\CustomersApp\src\main\java\com\back\customers\controller\api\CustomersApiInterface.java
 C:\Users\Rodrigue\Desktop\PayeTonKawa\CustomersApp\src\main\java\com\back\customers\dto\CustomerDto.java
 C:\Users\Rodrigue\Desktop\PayeTonKawa\CustomersApp\src\main\java\com\back\customers\services\CustomerService.java
-C:\Users\Rodrigue\Desktop\PayeTonKawa\CustomersApp\src\main\java\com\back\customers\authentication\ApiKeyAuthentication.java
-C:\Users\Rodrigue\Desktop\PayeTonKawa\CustomersApp\src\main\java\com\back\customers\authentication\AuthenticationFilter.java
+C:\Users\Rodrigue\Desktop\PayeTonKawa\CustomersApp\src\main\java\com\back\customers\config\SpringSecurityConfig.java
 C:\Users\Rodrigue\Desktop\PayeTonKawa\CustomersApp\src\main\java\com\back\customers\dto\ProfileDto.java
 C:\Users\Rodrigue\Desktop\PayeTonKawa\CustomersApp\src\main\java\com\back\customers\services\impl\CustomersServiceImpl.java
-C:\Users\Rodrigue\Desktop\PayeTonKawa\CustomersApp\src\main\java\com\back\customers\authentication\AuthenticationService.java
+C:\Users\Rodrigue\Desktop\PayeTonKawa\CustomersApp\src\main\java\com\back\customers\controller\LoginController.java
 C:\Users\Rodrigue\Desktop\PayeTonKawa\CustomersApp\src\main\java\com\back\customers\config\RabbitConfig.java
 C:\Users\Rodrigue\Desktop\PayeTonKawa\CustomersApp\src\main\java\com\back\customers\exception\CustomException.java
+C:\Users\Rodrigue\Desktop\PayeTonKawa\CustomersApp\src\main\java\com\back\customers\services\JWTService.java
 C:\Users\Rodrigue\Desktop\PayeTonKawa\CustomersApp\src\main\java\com\back\customers\CustomersApplication.java
-C:\Users\Rodrigue\Desktop\PayeTonKawa\CustomersApp\src\main\java\com\back\customers\config\SecurityConfig.java

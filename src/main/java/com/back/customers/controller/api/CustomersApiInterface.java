@@ -38,7 +38,6 @@ public interface CustomersApiInterface {
     @RequestMapping(value = "getCustomerById/{id}", method = RequestMethod.GET)
     ResponseEntity<CustomerDto> getCustomerById(@PathVariable Long id);
 
-
     @Operation(summary = "Update a customer")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Customer updated",
