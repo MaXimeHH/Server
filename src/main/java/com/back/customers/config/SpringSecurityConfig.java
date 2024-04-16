@@ -22,12 +22,21 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 import javax.crypto.spec.SecretKeySpec;
+import java.security.SecureRandom;
+import java.util.Base64;
 
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig {
 
-    private final  String jwtKey = "laclegeneree256bitkey1234567890123456";
+    private final String jwtKey = generateNewKey();
+
+    private String generateNewKey() {
+        SecureRandom secureRandom = new SecureRandom();
+        byte[] key = new byte[64];
+        secureRandom.nextBytes(key);
+        return Base64.getEncoder().encodeToString(key);
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -36,10 +45,9 @@ public class SpringSecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults())) // Ajout de la configuration du serveur de ressources OAuth2
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
                 .build();
     }
-
 
     @Bean
     public JwtDecoder jwtDecoder() {
@@ -61,7 +69,6 @@ public class SpringSecurityConfig {
                 .build();
         return new InMemoryUserDetailsManager(user);
     }
-
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
