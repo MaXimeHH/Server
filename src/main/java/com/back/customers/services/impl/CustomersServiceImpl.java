@@ -8,13 +8,13 @@ import com.back.customers.services.CustomerService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class CustomersServiceImpl implements CustomerService {
+
+    private static final String CUSTOMER_NOT_FOUND_MSG = "Customer with id %d not found";
 
     private final CustomerRepository customerRepository;
     private final CustomerMapper customerMapper;
@@ -26,25 +26,26 @@ public class CustomersServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerDto> getAllCustomers() {
-        List<CustomerDto> result = new ArrayList<>();
-        this.customerRepository.findAll().forEach(
-                elt -> result.add(this.customerMapper.customerToCustomerDto(elt))
-        );
-        return result;
+        return this.customerRepository.findAll().stream()
+                .map(this.customerMapper::customerToCustomerDto)
+                .toList();
     }
 
     @Override
     public CustomerDto getCustomerById(Long id) {
-        return this.customerMapper.customerToCustomerDto(this.customerRepository.findById(id).get());
+        return this.customerRepository.findById(id)
+                .map(this.customerMapper::customerToCustomerDto)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(CUSTOMER_NOT_FOUND_MSG, id)));
     }
 
     @Override
     public CustomerDto updateCustomer(CustomerDto customer) {
-        Customer oldCustomer = this.customerRepository.findById(customer.getId()).get();
+        Customer oldCustomer = this.customerRepository.findById(customer.getId())
+                .orElseThrow(() -> new EntityNotFoundException(String.format(CUSTOMER_NOT_FOUND_MSG, customer.getId())));
 
         oldCustomer.setAdresse(customer.getAdresse());
         oldCustomer.setVille(customer.getVille());
-        oldCustomer.setProfiles(customer.getProfiles().stream().map(customerMapper::profileDtoToProfile).collect(Collectors.toList()));
+        oldCustomer.setProfiles(customer.getProfiles().stream().map(customerMapper::profileDtoToProfile).toList());
         oldCustomer.setCodePostal(customer.getCodePostal());
 
         this.customerRepository.saveAndFlush(oldCustomer);
@@ -54,12 +55,10 @@ public class CustomersServiceImpl implements CustomerService {
 
     @Override
     public void deleteCustomer(Long id) {
-        Optional<Customer> customer = customerRepository.findById(id);
-        if (customer.isPresent()) {
-            customerRepository.delete(customer.get());
-        } else {
-            throw new EntityNotFoundException("Customer with id " + id + " not found");
-        }
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(String.format(CUSTOMER_NOT_FOUND_MSG, id)));
+
+        customerRepository.delete(customer);
     }
 
     @Override
@@ -67,7 +66,7 @@ public class CustomersServiceImpl implements CustomerService {
         Customer newCustomer = this.customerMapper.customerDtoToCustomer(customer);
 
         newCustomer.setCodePostal(customer.getCodePostal());
-        newCustomer.setProfiles(customer.getProfiles().stream().map(customerMapper::profileDtoToProfile).collect(Collectors.toList()));
+        newCustomer.setProfiles(customer.getProfiles().stream().map(customerMapper::profileDtoToProfile).toList());
         newCustomer.setVille(customer.getVille());
         newCustomer.setAdresse(customer.getAdresse());
 
