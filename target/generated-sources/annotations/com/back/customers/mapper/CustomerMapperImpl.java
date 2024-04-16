@@ -11,8 +11,13 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
+<<<<<<< Updated upstream
     date = "2024-04-16T15:29:32+0200",
     comments = "version: 1.6.0.Beta1, compiler: javac, environment: Java 21.0.2 (Homebrew)"
+=======
+    date = "2024-04-16T15:14:22+0200",
+    comments = "version: 1.6.0.Beta1, compiler: javac, environment: Java 21.0.1 (Oracle Corporation)"
+>>>>>>> Stashed changes
 )
 @Component
 public class CustomerMapperImpl implements CustomerMapper {
