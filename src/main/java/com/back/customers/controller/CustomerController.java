@@ -105,9 +105,4 @@ public class CustomerController implements CustomersApiInterface {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    @GetMapping("test")
-    public String getTest() {
-        return "a value";
-    }
 }
