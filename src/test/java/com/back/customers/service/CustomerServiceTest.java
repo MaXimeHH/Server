@@ -65,8 +65,8 @@ public class CustomerServiceTest {
     public void testUpdateCustomer() {
         Customer customer = new Customer();
         CustomerDto customerDto = new CustomerDto();
-        customerDto.setId(1L); // Set an ID for the CustomerDto object
-        customerDto.setProfiles(new ArrayList<>()); // Set profiles for the CustomerDto object
+        customerDto.setId(1L);
+        customerDto.setProfiles(new ArrayList<>());
         when(customerRepository.findById(anyLong())).thenReturn(Optional.of(customer));
         when(customerRepository.saveAndFlush(any(Customer.class))).thenReturn(customer);
         when(customerMapper.customerToCustomerDto(customer)).thenReturn(customerDto);
@@ -91,7 +91,7 @@ public class CustomerServiceTest {
     public void testCreateCustomer() {
         Customer customer = new Customer();
         CustomerDto customerDto = new CustomerDto();
-        customerDto.setProfiles(new ArrayList<>()); // Set profiles for the CustomerDto object
+        customerDto.setProfiles(new ArrayList<>());
         when(customerMapper.customerDtoToCustomer(any(CustomerDto.class))).thenReturn(customer);
         when(customerRepository.save(any(Customer.class))).thenReturn(customer);
         when(customerMapper.customerToCustomerDto(customer)).thenReturn(customerDto);
@@ -152,8 +152,8 @@ public class CustomerServiceTest {
     @Test
     public void testUpdateCustomerFailure() {
         CustomerDto customerDto = new CustomerDto();
-        customerDto.setId(1L); // Set an ID for the CustomerDto object
-        customerDto.setProfiles(new ArrayList<>()); // Set profiles for the CustomerDto object
+        customerDto.setId(1L);
+        customerDto.setProfiles(new ArrayList<>());
         when(customerRepository.findById(anyLong())).thenReturn(Optional.empty());
 
         assertThrows(EntityNotFoundException.class, () -> {
