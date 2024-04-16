@@ -20,7 +20,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-public class CustomerControllerTest {
+class CustomerControllerTest {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomerControllerTest.class);
 
@@ -40,11 +40,11 @@ public class CustomerControllerTest {
 
 
     @Test
-    public void testGetAllCustomers() {
+    void testGetAllCustomers() {
         List<CustomerDto> customers = Collections.singletonList(new CustomerDto());
         when(customerService.getAllCustomers()).thenReturn(customers);
 
-        ResponseEntity<List<CustomerDto>> response = customerController.getAllOrders();
+        ResponseEntity<List<CustomerDto>> response = customerController.getAllCustomers();
 
         logger.info("HTTP Status: {}", response.getStatusCode());
         logger.info("Response Body: {}", response.getBody());
@@ -55,7 +55,7 @@ public class CustomerControllerTest {
     }
 
     @Test
-    public void testGetCustomerById() {
+    void testGetCustomerById() {
         Long id = 1L;
         CustomerDto customer = new CustomerDto();
         when(customerService.getCustomerById(id)).thenReturn(customer);
@@ -71,7 +71,7 @@ public class CustomerControllerTest {
     }
 
     @Test
-    public void testCreateCustomer() {
+    void testCreateCustomer() {
         CustomerDto customer = new CustomerDto();
         CustomerDto newCustomer = new CustomerDto();
         when(customerService.createCustomer(customer)).thenReturn(newCustomer);
@@ -87,7 +87,7 @@ public class CustomerControllerTest {
     }
 
     @Test
-    public void testDeleteCustomer() {
+    void testDeleteCustomer() {
         Long id = 1L;
         doNothing().when(customerService).deleteCustomer(id);
 
@@ -100,7 +100,7 @@ public class CustomerControllerTest {
     }
 
     @Test
-    public void testUpdateCustomer() {
+    void testUpdateCustomer() {
         CustomerDto customer = new CustomerDto();
         CustomerDto updatedCustomer = new CustomerDto();
         when(customerService.updateCustomer(customer)).thenReturn(updatedCustomer);

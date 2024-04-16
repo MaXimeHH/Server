@@ -25,7 +25,7 @@ public interface CustomersApiInterface {
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @RequestMapping(value = "getAllCustomers", method = RequestMethod.GET)
-    ResponseEntity<List<CustomerDto>> getAllOrders();
+    ResponseEntity<List<CustomerDto>> getAllCustomers();
 
     @Operation(summary = "Get a customer by its ID")
     @ApiResponses(value = {

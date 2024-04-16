@@ -28,7 +28,7 @@ public class CustomerController implements CustomersApiInterface {
     private RabbitTemplate rabbitTemplate;
 
     @GetMapping("getAllCustomers")
-    public ResponseEntity<List<CustomerDto>> getAllOrders() {
+    public ResponseEntity<List<CustomerDto>> getAllCustomers() {
         try {
             rabbitTemplate.convertAndSend(RabbitConfig.GET_ALL_CUSTOMERS_QUEUE, "getAllCustomers");
             List<CustomerDto> customers = this.customerService.getAllCustomers();
